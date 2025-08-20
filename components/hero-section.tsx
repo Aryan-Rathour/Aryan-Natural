@@ -21,7 +21,7 @@ export function HeroSection() {
       <div className="container mx-auto px-4 text-center relative z-10">
         <div className="max-w-4xl mx-auto">
           <h1 className="text-4xl md:text-6xl font-bold text-foreground mb-6 leading-tight animate-fade-in-up">
-            Pure & Natural Foods
+            Fresh & Healthy Roasted  Foods
             <br />
             <span className="text-primary">from Bihar to Your Plate</span>
           </h1>
@@ -58,7 +58,7 @@ export function HeroSection() {
           >
             <div className="flex items-center gap-2">
               <div className="w-3 h-3 bg-primary rounded-full"></div>
-              <span>100% Natural</span>
+              <span>100% Healthy</span>
             </div>
             <div className="flex items-center gap-2">
               <div className="w-3 h-3 bg-primary rounded-full"></div>
