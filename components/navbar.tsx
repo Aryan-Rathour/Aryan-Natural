@@ -10,9 +10,9 @@ import { useCart } from "@/contexts/cart-context"
 export function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const { state } = useCart()
-
+ 
   return (
-    <nav className="sticky top-0 z-50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b">
+    <nav className="bg-primary-color sticky top-0 z-50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
@@ -24,8 +24,8 @@ export function Navbar() {
           </Link>
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex items-center space-x-8">
-            <Link href="/" className="text-foreground hover:text-primary transition-colors relative group">
+          <div className="hidden md:flex items-center space-x-8 nav-links">
+            <Link href="/" className="text-foreground hover:text-primary transition-colors relative group ">
               Home
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full"></span>
             </Link>

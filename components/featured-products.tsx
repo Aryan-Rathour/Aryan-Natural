@@ -6,7 +6,7 @@ const featuredProducts = [
   {
     id: "1",
     name: "Premium Murmura",
-    price: 120,
+    price: 60,
     originalPrice: 150,
     image: "/premium-puffed-rice-murmura.png",
     rating: 5,
@@ -15,16 +15,16 @@ const featuredProducts = [
   },
   {
     id: "2",
-    name: "Pure Gurh",
-    price: 200,
-    image: "/pure-jaggery-gurh-blocks.png",
+    name: "Roasted Chana",
+    price: 120,
+    image: "/chana-product.jpg",
     rating: 5,
     tagline: "Unrefined natural sweetener",
   },
   {
     id: "3",
-    name: "Roasted Chana",
-    price: 80,
+    name: "Pure Gurh",
+    price: 60,
     originalPrice: 100,
     image: "/placeholder-ipaf0.png",
     rating: 4,
@@ -33,11 +33,43 @@ const featuredProducts = [
   {
     id: "4",
     name: "Shattu Powder",
-    price: 180,
+    price: 120,
     image: "/placeholder.svg?height=300&width=300",
     rating: 5,
     tagline: "Nutritious superfood flour",
   },
+  {
+    id: "5",
+    name: "Chura",
+    price: 60,
+    image: "/placeholder.svg?height=300&width=300",
+    rating: 5,
+    tagline: "Nutritious superfood flour",
+  },
+  // {
+  //   id: "6",
+  //   name: "Kachha Chana",
+  //   price: 80,
+  //   image: "/placeholder.svg?height=300&width=300",
+  //   rating: 5,
+  //   tagline: "Nutritious superfood flour",
+  // },
+  // {
+  //   id: "7",
+  //   name: "Safed Matar",
+  //   price: 60,
+  //   image: "/placeholder.svg?height=300&width=300",
+  //   rating: 5,
+  //   tagline: "Nutritious superfood flour",
+  // },
+  // {
+  //   id: "8",
+  //   name: "Corn Flakes",
+  //   price: 80,
+  //   image: "/placeholder.svg?height=300&width=300",
+  //   rating: 5,
+  //   tagline: "Nutritious superfood flour",
+  // },
 ]
 
 export function FeaturedProducts() {
@@ -51,9 +83,15 @@ export function FeaturedProducts() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {/* Mobile: 2 cols, Tablet: 3 cols, Medium: 4 cols, Laptop+: Center with less gap */}
+        <div className="
+          grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 
+          lg:flex lg:flex-wrap lg:justify-center lg:gap-4
+        ">
           {featuredProducts.map((product) => (
-            <ProductCard key={product.id} {...product} />
+            <div key={product.id} className="lg:flex-shrink-0">
+              <ProductCard {...product} />
+            </div>
           ))}
         </div>
       </div>

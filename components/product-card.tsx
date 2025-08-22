@@ -89,78 +89,85 @@ export function ProductCard({
     setShowSuccess(true)
   }
 
+
   return (
     <>
       <div ref={scrollRef} className="scroll-reveal">
-        <Card
-          id={`product-${id}`}
-          className="group cursor-pointer product-card-hover overflow-hidden"
-          onMouseEnter={() => setIsHovered(true)}
-          onMouseLeave={() => setIsHovered(false)}
-        >
-          <CardContent className="p-0">
-            <div className="relative overflow-hidden rounded-t-lg">
-              {isNew && <Badge className="absolute top-2 left-2 z-10 bg-accent text-accent-foreground">New</Badge>}
+      <Card
+  id={`product-${id}`}
+  className="group cursor-pointer overflow-hidden w-40 h-auto sm:w-48 md:w-56 lg:w-64 mx-auto"
+  onMouseEnter={() => setIsHovered(true)}
+  onMouseLeave={() => setIsHovered(false)}
+>
+  <CardContent className="p-0">
+    <div className="relative overflow-hidden rounded-t-md">
+      {isNew && (
+        <Badge className="absolute top-1 left-1 z-10 bg-accent text-accent-foreground text-[10px] px-1.5 py-0.5">
+          New
+        </Badge>
+      )}
 
-              <div className="aspect-square relative">
-                <Image
-                  src={image || `/placeholder.svg?height=300&width=300&query=${name} organic food product`}
-                  alt={name}
-                  fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-110"
-                />
-              </div>
+      {/* Smaller image */}
+      <div className="relative w-full h-32 sm:h-40 md:h-48">
+        <Image
+          src={
+            image 
+          }
+          alt={name}
+          fill
+          className="object-cover transition-transform duration-500 group-hover:scale-105"
+        />
+      </div>
 
-              {originalPrice && (
-                <Badge className="absolute top-2 right-2 bg-destructive text-destructive-foreground">
-                  {Math.round(((originalPrice - price) / originalPrice) * 100)}% OFF
-                </Badge>
-              )}
+      {originalPrice && (
+        <Badge className="absolute top-1 right-1 bg-destructive text-destructive-foreground text-[10px] px-1.5 py-0.5">
+          {Math.round(((originalPrice - price) / originalPrice) * 100)}% OFF
+        </Badge>
+      )}
+    </div>
 
-              <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/60 to-transparent add-to-cart-slide">
-                <Button onClick={handleAddToCart} disabled={isAdding} className="w-full btn-hover-scale" size="sm">
-                  <ShoppingCart className="w-4 h-4 mr-2" />
-                  {isAdding ? "Adding..." : "Quick Add"}
-                </Button>
-              </div>
-            </div>
+    <div className="p-2 sm:p-3">
+      <h3 className="font-semibold text-xs sm:text-sm line-clamp-1">{name}</h3>
+      <p className="text-[10px] sm:text-xs text-muted-foreground line-clamp-2 mb-1">
+        {tagline}
+      </p>
 
-            <div className="p-4">
-              <h3 className="font-semibold text-lg mb-1">{name}</h3>
-              <p className="text-sm text-muted-foreground mb-2">{tagline}</p>
+      <div className="flex items-center gap-1 mb-1">
+        <span className="text-sm sm:text-base font-bold text-primary">
+          ₹{price}
+        </span>
+        {originalPrice && (
+          <span className="text-[10px] sm:text-xs text-muted-foreground line-through">
+            ₹{originalPrice}
+          </span>
+        )}
+      </div>
 
-              <div className="flex items-center gap-1 mb-3">
-                {[...Array(5)].map((_, i) => (
-                  <Star
-                    key={i}
-                    className={`w-4 h-4 transition-colors ${i < rating ? "fill-accent text-accent" : "text-muted-foreground"}`}
-                  />
-                ))}
-                <span className="text-sm text-muted-foreground ml-1">({rating})</span>
-              </div>
+      <div className="flex gap-2">
+  <Button
+    onClick={handleAddToCart}
+    disabled={isAdding}
+    size="sm"
+    className="flex-[3] h-7 text-[10px] sm:text-xs"
+  >
+    <ShoppingCart className="w-3 h-3 mr-1" />
+    Add
+  </Button>
 
-              <div className="flex items-center justify-between mb-4">
-                <div className="flex items-center gap-2">
-                  <span className="text-xl font-bold text-primary">₹{price}</span>
-                  {originalPrice && (
-                    <span className="text-sm text-muted-foreground line-through">₹{originalPrice}</span>
-                  )}
-                </div>
-              </div>
+  <Button
+    variant="outline"
+    size="sm"
+    className="flex-[2] h-7 px-2 text-[10px] sm:text-xs bg-transparent"
+  >
+    Buy
+  </Button>
+</div>
 
-              <div className="flex gap-2">
-                <Button onClick={handleAddToCart} disabled={isAdding} className="flex-1 btn-hover-scale" size="sm">
-                  <ShoppingCart className="w-4 h-4 mr-2" />
-                  {isAdding ? "Adding..." : "Add to Cart"}
-                </Button>
+    </div>
+  </CardContent>
+</Card>
 
-                <Button variant="outline" size="sm" className="px-4 bg-transparent btn-hover-scale">
-                  Buy Now
-                </Button>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
+
       </div>
 
       <SuccessAnimation

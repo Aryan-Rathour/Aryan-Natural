@@ -1,7 +1,7 @@
 import type React from "react"
 import type { Metadata } from "next"
 import { Poppins, Lato, Caveat } from "next/font/google"
-import "./globals.css"
+import './globals.css';
 import { CartProvider } from "@/contexts/cart-context"
 
 const poppins = Poppins({

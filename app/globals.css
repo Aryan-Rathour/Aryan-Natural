@@ -4,6 +4,8 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
+  --primary-color: #4CAF50;
+  --secondary-color:#A0522D;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
@@ -37,7 +39,26 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+  --primary-color: #4CAF50;
+  --secondary-color: #A0522D;
 }
+
+.primary {
+  color: var(--primary-color);
+}
+.secondary {
+  color: var(--secondary-color);
+}
+
+.bg-primary-color {
+  background-color: var(--primary-color);
+  color: white; /* optional text color */
+}
+
+.nav-links a {
+  @apply text-white hover:text-primary transition-colors;
+}
+
 
 .dark {
   --background: oklch(0.145 0 0);
@@ -120,4 +141,14 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+
+/* Hide scrollbar (cross browser) */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* IE & Edge */
+  scrollbar-width: none;     /* Firefox */
 }
