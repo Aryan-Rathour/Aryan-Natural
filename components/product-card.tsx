@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
@@ -53,6 +53,8 @@ export function ProductCard({
       category,
     })
 
+
+
     const productImage = document.querySelector(`#product-${id} img`)
     const cartIcon = document.querySelector(".cart-icon")
 
@@ -90,10 +92,23 @@ export function ProductCard({
     setIsAdding(false)
     setShowSuccess(true)
 
-     setTimeout(() => {
-    setShowSuccess(false);
-  }, 3000);
+  
   }
+
+ useEffect(() => {
+  const cartProduct = localStorage.getItem("aryan-naturals-cart");
+  if (cartProduct) {
+    try {
+      const parsed = JSON.parse(cartProduct);
+      if (Array.isArray(parsed) && parsed.length > 0) {
+        setShowSuccess(true);
+      }
+    } catch (error) {
+      console.error("Failed to parse cartProduct", error);
+    }
+  }
+}, []);
+
 
 
   return (
