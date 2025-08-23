@@ -1,7 +1,6 @@
 "use client"
 
 import type React from "react"
-import type { Metadata } from "next"
 import { useState } from "react"
 import { MapPin, Phone, Mail, Clock, Send } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -12,28 +11,6 @@ import { Textarea } from "@/components/ui/textarea"
 import { Badge } from "@/components/ui/badge"
 import { useScrollReveal } from "@/hooks/use-scroll-reveal"
 import { SuccessAnimation } from "@/components/success-animation"
-
-
-
-export const metadata: Metadata = {
-  title: "Contact Us - Right Basket Lucknow | Local Products Delivery",
-  description:
-    "Contact Right Basket for premium local products in Lucknow. Get in touch for orders, queries, or information about our organic grains, snacks, and traditional foods.",
-  keywords: [
-    "contact Right Basket",
-    "Lucknow local products contact",
-    "organic food delivery Lucknow",
-    "Right Basket phone number",
-    "local products inquiry Lucknow",
-  ],
-  openGraph: {
-    title: "Contact Us - Right Basket Lucknow",
-    description:
-      "Contact Right Basket for premium local products in Lucknow. Get in touch for orders, queries, or information about our organic foods.",
-    url: "https://rightbasket.in/contact",
-  },
-}
-
 
 
 const contactInfo = [

@@ -1,5 +1,4 @@
 "use client"
-import type { Metadata } from "next"
 import { useState, useMemo } from "react"
 import { Search, Grid, List } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -8,29 +7,6 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Badge } from "@/components/ui/badge"
 import { ProductCard } from "@/components/product-card"
 import { useScrollReveal } from "@/hooks/use-scroll-reveal"
-
-
-
-export const metadata: Metadata = {
-  title: "All Products - Premium Local Products in Lucknow | Right Basket",
-  description:
-    "Browse all premium local products at Right Basket. Organic grains, traditional snacks, natural sweeteners, and specialty items from Lucknow. Fresh delivery guaranteed.",
-  keywords: [
-    "all products Lucknow",
-    "local products online",
-    "organic food Lucknow",
-    "traditional snacks",
-    "natural sweeteners",
-    "Right Basket products",
-    "murmura gurh chana shattu",
-  ],
-  openGraph: {
-    title: "All Products - Premium Local Products in Lucknow",
-    description:
-      "Browse all premium local products at Right Basket. Organic grains, traditional snacks, natural sweeteners, and specialty items from Lucknow.",
-    url: "https://rightbasket.in/products",
-  },
-}
 
 
 const products = [
