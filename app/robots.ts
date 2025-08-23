@@ -5,7 +5,7 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: "*",
       allow: "/",
-      disallow: ["/admin/", "/api/", ],
+      disallow: ["/admin/", "/api/", "/cart/", "/checkout/" ],
     },
     sitemap: "https://rightbasket.in/sitemap.xml",
   }
