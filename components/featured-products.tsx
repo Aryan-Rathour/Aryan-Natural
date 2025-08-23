@@ -1,5 +1,6 @@
 "use client"
 
+import { useState } from "react"
 import { ProductCard } from "./product-card"
 
 const featuredProducts = [
@@ -73,6 +74,8 @@ const featuredProducts = [
 ]
 
 export function FeaturedProducts() {
+    const [showSuccess, setShowSuccess] = useState(false)
+  
   return (
     <section className="py-16">
       <div className="container mx-auto px-4">
@@ -95,6 +98,7 @@ export function FeaturedProducts() {
           ))}
         </div>
       </div>
+
     </section>
   )
 }

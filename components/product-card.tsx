@@ -9,13 +9,13 @@ import { Star, ShoppingCart } from "lucide-react"
 import { useScrollReveal } from "@/hooks/use-scroll-reveal"
 import { useCart } from "@/contexts/cart-context"
 import { SuccessAnimation } from "@/components/success-animation"
-import  {AddedToCartPopup}  from "./itemAdded"
+import  NotificationPopUp  from "./itemAdded"
 
 interface ProductCardProps {
   id: string
   name: string
   price: number
-  originalPrice?: number
+  originalPrice?: number 
   image: string
   rating: number
   tagline: string
@@ -83,11 +83,16 @@ export function ProductCard({
         setTimeout(() => cartIcon.classList.remove("bounce-cart"), 600)
       }, 900)
     }
+    
 
     // Simulate API call
     await new Promise((resolve) => setTimeout(resolve, 500))
     setIsAdding(false)
     setShowSuccess(true)
+
+     setTimeout(() => {
+    setShowSuccess(false);
+  }, 3000);
   }
 
 
@@ -171,19 +176,18 @@ export function ProductCard({
 
       </div>
 
-      <SuccessAnimation
+      {/* <SuccessAnimation
         show={showSuccess}
         message="Added to cart successfully!"
         onComplete={() => setShowSuccess(false)}
-      /> 
-      <AddedToCartPopup show={false} product={{
-        id: "",
-        name: "",
-        price: 0,
-        image: ""
-      }} onClose={function (): void {
-        throw new Error("Function not implemented.")
-      } }/>
+      />  */}
+
+
+      {showSuccess &&
+
+                    <NotificationPopUp message="Item added!" onViewCart={() => console.log("View Cart clicked")}/> 
+
+      }
     </> 
   )
 }
