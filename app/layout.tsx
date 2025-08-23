@@ -28,6 +28,9 @@ export const metadata: Metadata = {
   title: "Aryan Naturals - Pure & Natural Foods from Bihar",
   description:
     "Traditional Indian organic food products like Murmura, Chana, Chura, Gurh, Khell, Shattu delivered fresh to your doorstep",
+     icons: {
+    icon: "/rbFavicon.png", // or '/favicon.png'
+  },
   generator: "Aryan-Natural",
 }
 
