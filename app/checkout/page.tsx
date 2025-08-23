@@ -1,5 +1,5 @@
 "use client"
-
+import type { Metadata } from "next"
 import { useState } from "react"
 import Link from "next/link"
 import { ArrowLeft, Check, CreditCard, Truck, MapPin } from "lucide-react"
@@ -12,6 +12,20 @@ import { Badge } from "@/components/ui/badge"
 import { useCart } from "@/contexts/cart-context"
 import { SuccessAnimation } from "@/components/success-animation"
 import { PaymentMethods } from "@/components/payment-methods"
+
+
+
+export const metadata: Metadata = {
+  title: "Checkout - Right Basket | Complete Your Order",
+  description:
+    "Complete your order for fresh local products from Lucknow. Secure checkout with multiple payment options and same-day delivery.",
+  keywords: ["checkout", "order local products", "Lucknow delivery", "secure payment", "Right Basket checkout"],
+  robots: {
+    index: false,
+    follow: true,
+  },
+}
+
 
 const steps = [
   { id: 1, name: "Shipping", icon: Truck },

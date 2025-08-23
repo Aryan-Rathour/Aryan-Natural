@@ -1,5 +1,6 @@
 "use client"
 
+import type { Metadata } from "next"
 import { useState } from "react"
 import Link from "next/link"
 import { Minus, Plus, Trash2, ShoppingBag, ArrowRight } from "lucide-react"
@@ -8,6 +9,27 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Separator } from "@/components/ui/separator"
 import { useCart } from "@/contexts/cart-context"
+
+
+
+export const metadata: Metadata = {
+  title: "Shopping Cart - Right Basket | Local Products Lucknow",
+  description:
+    "Review your selected local products from Lucknow before checkout. Fresh organic grains, snacks, and traditional foods ready for delivery.",
+  keywords: [
+    "shopping cart",
+    "local products cart",
+    "Lucknow products checkout",
+    "organic food cart",
+    "Right Basket cart",
+  ],
+  robots: {
+    index: false,
+    follow: true,
+  },
+}
+
+
 
 export default function CartPage() {
   const { state, updateQuantity, removeItem, clearCart } = useCart()
