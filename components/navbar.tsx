@@ -18,9 +18,9 @@ export function Navbar() {
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2 btn-hover-scale">
             <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-sm">AN</span>
+              <span className="text-primary-foreground font-bold text-sm">rb</span>
             </div>
-            <span className="font-bold text-xl text-primary">Aryan Naturals</span>
+            <span className="font-bold text-xl text-primary">Right Basket</span>
           </Link>
 
           {/* Desktop Menu */}

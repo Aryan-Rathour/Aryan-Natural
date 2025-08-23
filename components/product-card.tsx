@@ -9,6 +9,7 @@ import { Star, ShoppingCart } from "lucide-react"
 import { useScrollReveal } from "@/hooks/use-scroll-reveal"
 import { useCart } from "@/contexts/cart-context"
 import { SuccessAnimation } from "@/components/success-animation"
+import  {AddedToCartPopup}  from "./itemAdded"
 
 interface ProductCardProps {
   id: string
@@ -174,7 +175,15 @@ export function ProductCard({
         show={showSuccess}
         message="Added to cart successfully!"
         onComplete={() => setShowSuccess(false)}
-      />
-    </>
+      /> 
+      <AddedToCartPopup show={false} product={{
+        id: "",
+        name: "",
+        price: 0,
+        image: ""
+      }} onClose={function (): void {
+        throw new Error("Function not implemented.")
+      } }/>
+    </> 
   )
 }
