@@ -63,6 +63,8 @@ const products = [
     rating: 4.6,
     tagline: "Authentic Flattened Rice",
     category: "Grains",
+        isNew: true,
+
   },
   {
     id: "4",

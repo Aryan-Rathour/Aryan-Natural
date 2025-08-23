@@ -16,6 +16,10 @@ export const metadata: Metadata = {
     description:
       "Discover premium local products in Lucknow. Fresh organic grains, traditional snacks, and authentic local foods delivered to your doorstep.",
   },
+  icons: {
+    icon: "/rbFavicon.png", 
+  
+  },
 }
 
 
