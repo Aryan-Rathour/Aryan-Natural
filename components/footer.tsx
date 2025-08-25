@@ -1,6 +1,8 @@
 import Link from "next/link"
 import { Facebook, Instagram, Twitter, Phone, Mail, MapPin } from "lucide-react"
 
+
+
 export function Footer() {
   return (
     <footer className="bg-secondary text-secondary-foreground">
@@ -9,10 +11,11 @@ export function Footer() {
           {/* Brand */}
           <div>
             <div className="flex items-center space-x-2 mb-4">
-              <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center">
-                <span className="text-primary-foreground font-bold text-sm">AN</span>
-              </div>
-              <span className="font-bold text-xl">Aryan Naturals</span>
+            
+              <img
+                alt="rightbasket logo"
+                src="/rbLogo.png"
+                />
             </div>
             <p className="text-secondary-foreground/80 mb-4">
               Bringing you the finest traditional Indian organic foods directly from Bihar's heartland.

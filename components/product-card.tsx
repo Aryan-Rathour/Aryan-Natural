@@ -308,7 +308,7 @@ export function ProductCard({
       <div ref={scrollRef} className="scroll-reveal">
         <Card
           id={`product-${id}`}
-          className="group cursor-pointer overflow-hidden w-40 h-auto sm:w-48 md:w-56 lg:w-64 mx-auto"
+          className="group cursor-pointer overflow-hidden w-40 h-auto sm:w-48 md:w-56 lg:w-64 mx-auto pt-0 pb-0.5"
         >
           <CardContent className="p-0">
             {/* Image + Badge */}
