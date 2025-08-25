@@ -1,3 +1,246 @@
+// "use client";
+
+// import { useEffect, useState } from "react";
+// import Image from "next/image";
+// import { Button } from "@/components/ui/button";
+// import { Card, CardContent } from "@/components/ui/card";
+// import { Badge } from "@/components/ui/badge";
+// import { Star, ShoppingCart } from "lucide-react";
+// import { useScrollReveal } from "@/hooks/use-scroll-reveal";
+// import { useCart } from "@/contexts/cart-context";
+// import { SuccessAnimation } from "@/components/success-animation";
+// import NotificationPopUp from "./itemAdded";
+// import { Minus, Plus } from "lucide-react";
+
+// interface ProductCardProps {
+//   id: string;
+//   name: string;
+//   price: number;
+//   originalPrice?: number;
+//   image: string;
+//   rating: number;
+//   tagline: string;
+//   category?: string;
+//   isNew?: boolean;
+// }
+
+// export function ProductCard({
+//   id,
+//   name,
+//   price,
+//   originalPrice,
+//   image,
+//   rating,
+//   tagline,
+//   category = "General",
+//   isNew,
+// }: ProductCardProps) {
+//   const [isHovered, setIsHovered] = useState(false);
+//   const [isAdding, setIsAdding] = useState(false);
+//   const [showSuccess, setShowSuccess] = useState(false);
+//   const scrollRef = useScrollReveal();
+//   const { addItem } = useCart();
+//   const [quantity, setQuantity] = useState(1);
+
+//   const handleIncrease = () => {
+//     setQuantity((prev) => prev + 1);
+//   };
+
+//   const handleDecrease = () => {
+//     setQuantity((prev) => Math.max(1, prev - 1));
+//   };
+
+//   const handleAddToCart = async () => {
+//     setIsAdding(true);
+
+//     addItem({
+//       id,
+//       name,
+//       price,
+//       originalPrice,
+//       image,
+//       category,
+//       quantity, // add item with correct quantity only here
+//     });
+
+//     const productImage = document.querySelector(`#product-${id} img`);
+//     const cartIcon = document.querySelector(".cart-icon");
+
+//     if (productImage && cartIcon) {
+//       const clone = productImage.cloneNode(true) as HTMLElement;
+//       const productRect = productImage.getBoundingClientRect();
+//       const cartRect = cartIcon.getBoundingClientRect();
+
+//       clone.className = "fixed w-12 h-12 z-50 pointer-events-none rounded-lg";
+//       clone.style.left = productRect.left + "px";
+//       clone.style.top = productRect.top + "px";
+//       clone.style.transition = "all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)";
+
+//       document.body.appendChild(clone);
+
+//       // Animate to cart
+//       setTimeout(() => {
+//         clone.style.left = cartRect.left + "px";
+//         clone.style.top = cartRect.top + "px";
+//         clone.style.transform = "scale(0.3)";
+//         clone.style.opacity = "0";
+//       }, 100);
+
+//       setTimeout(() => {
+//         document.body.removeChild(clone);
+//         // Bounce cart icon
+//         cartIcon.classList.add("bounce-cart");
+//         setTimeout(() => cartIcon.classList.remove("bounce-cart"), 600);
+//       }, 900);
+//     }
+
+//     // Simulate API call
+//     await new Promise((resolve) => setTimeout(resolve, 500));
+//     setIsAdding(false);
+//     setShowSuccess(true);
+//   };
+
+//   useEffect(() => {
+//     const cartProduct = localStorage.getItem("aryan-naturals-cart");
+//     if (cartProduct) {
+//       try {
+//         const parsed = JSON.parse(cartProduct);
+//         if (Array.isArray(parsed) && parsed.length > 0) {
+//           setShowSuccess(true);
+//         }
+//       } catch (error) {
+//         console.error("Failed to parse cartProduct", error);
+//       }
+//     }
+//   }, []);
+
+//   return (
+//     <>
+//       <div ref={scrollRef} className="scroll-reveal">
+//         <Card
+//           id={`product-${id}`}
+//           className="group cursor-pointer overflow-hidden w-40 h-auto sm:w-48 md:w-56 lg:w-64 mx-auto"
+//           onMouseEnter={() => setIsHovered(true)}
+//           onMouseLeave={() => setIsHovered(false)}
+//         >
+//           <CardContent className="p-0">
+//             <div className="relative overflow-hidden rounded-t-md">
+//               {isNew && (
+//                 <Badge className="absolute top-1 left-1 z-10 bg-accent text-accent-foreground text-[10px] px-1.5 py-0.5">
+//                   New
+//                 </Badge>
+//               )}
+
+//               {/* Smaller image */}
+//               <div className="relative w-full h-32 sm:h-40 md:h-48">
+//                 <Image
+//                   src={image}
+//                   alt={name}
+//                   fill
+//                   className="object-cover transition-transform duration-500 group-hover:scale-105"
+//                 />
+//               </div>
+
+//               {originalPrice && (
+//                 <Badge className="absolute top-1 right-1 bg-destructive text-destructive-foreground text-[10px] px-1.5 py-0.5">
+//                   {Math.round(((originalPrice - price) / originalPrice) * 100)}%
+//                   OFF
+//                 </Badge>
+//               )}
+//             </div>
+
+//             <div className="p-2 sm:p-3">
+//               <h3 className="font-semibold text-xs sm:text-sm line-clamp-1">
+//                 {name}
+//               </h3>
+//               <p className="text-[10px] sm:text-xs text-muted-foreground line-clamp-2 mb-1">
+//                 {tagline}
+//               </p>
+
+//               <div className="flex items-center gap-1 mb-1">
+//                 <span className="text-sm sm:text-base font-bold text-primary">
+//                   ₹{price}
+//                   {quantity > 1 && (
+//                     <span className="text-xs text-muted-foreground ml-1">
+//                       × {quantity} = ₹{price * quantity}
+//                     </span>
+//                   )}
+//                 </span>
+//                 {originalPrice && (
+//                   <span className="text-[10px] sm:text-xs text-muted-foreground line-through">
+//                     ₹{originalPrice}
+//                   </span>
+//                 )}
+//               </div>
+//               {/* Quantity Selector */}
+//               <div className="flex items-center justify-between bg-black rounded-md mt-3 mb-2 overflow-hidden">
+//                 {/* Minus */}
+//                 <button
+//                   onClick={handleDecrease}
+//                   className="flex-1 py-2 text-white text-lg font-bold disabled:opacity-50 disabled:cursor-not-allowed"
+//                   disabled={quantity === 0}
+//                 >
+//                   –
+//                 </button>
+
+//                 {/* Quantity */}
+//                 <span className="w-12 text-center bg-white text-black font-semibold py-2">
+//                   {quantity}
+//                 </span>
+
+//                 {/* Plus */}
+//                 <button
+//                   onClick={handleIncrease}
+//                   className="flex-1 py-2 text-white text-lg font-bold"
+//                 >
+//                   +
+//                 </button>
+//               </div>
+
+//               <div className="flex gap-2">
+//                 <Button
+//                   onClick={() => {
+//                     if (quantity > 0) {
+//                       handleAddToCart(); // ab ye cart update karega
+//                     }
+//                   }}
+//                   disabled={isAdding || quantity === 0}
+//                   size="sm"
+//                   className="flex-[3] h-7 text-[10px] sm:text-xs"
+//                 >
+//                   <ShoppingCart className="w-3 h-3 mr-1" />
+//                   Add
+//                 </Button>
+
+//                 <Button
+//                   variant="outline"
+//                   size="sm"
+//                   className="flex-[2] h-7 px-2 text-[10px] sm:text-xs bg-transparent"
+//                 >
+//                   Buy
+//                 </Button>
+//               </div>
+//             </div>
+//           </CardContent>
+//         </Card>
+//       </div>
+
+//       {/* <SuccessAnimation
+//         show={showSuccess}
+//         message="Added to cart successfully!"
+//         onComplete={() => setShowSuccess(false)}
+//       />  */}
+
+//       {showSuccess && (
+//         <NotificationPopUp
+//           message="Item added!"
+//           onViewCart={() => console.log("View Cart clicked")}
+//         />
+//       )}
+//     </>
+//   );
+// }
+
 "use client";
 
 import { useEffect, useState } from "react";
@@ -5,12 +248,10 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Star, ShoppingCart } from "lucide-react";
+import { ShoppingCart } from "lucide-react";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 import { useCart } from "@/contexts/cart-context";
-import { SuccessAnimation } from "@/components/success-animation";
 import NotificationPopUp from "./itemAdded";
-import { Minus, Plus } from "lucide-react";
 
 interface ProductCardProps {
   id: string;
@@ -30,25 +271,19 @@ export function ProductCard({
   price,
   originalPrice,
   image,
-  rating,
   tagline,
   category = "General",
   isNew,
 }: ProductCardProps) {
-  const [isHovered, setIsHovered] = useState(false);
   const [isAdding, setIsAdding] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
   const scrollRef = useScrollReveal();
-  const { addItem } = useCart();
-  const [quantity, setQuantity] = useState(1);
 
-  const handleIncrease = () => {
-    setQuantity((prev) => prev + 1);
-  };
+  const { state, addItem, updateQuantity } = useCart();
 
-  const handleDecrease = () => {
-    setQuantity((prev) => Math.max(1, prev - 1));
-  };
+  // check if item already exists in cart
+  const cartItem = state.items.find((item) => item.id === id);
+  const quantity = cartItem?.quantity || 0;
 
   const handleAddToCart = async () => {
     setIsAdding(true);
@@ -60,59 +295,13 @@ export function ProductCard({
       originalPrice,
       image,
       category,
-      quantity, // add item with correct quantity only here
+      quantity: 1,
     });
 
-    const productImage = document.querySelector(`#product-${id} img`);
-    const cartIcon = document.querySelector(".cart-icon");
-
-    if (productImage && cartIcon) {
-      const clone = productImage.cloneNode(true) as HTMLElement;
-      const productRect = productImage.getBoundingClientRect();
-      const cartRect = cartIcon.getBoundingClientRect();
-
-      clone.className = "fixed w-12 h-12 z-50 pointer-events-none rounded-lg";
-      clone.style.left = productRect.left + "px";
-      clone.style.top = productRect.top + "px";
-      clone.style.transition = "all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)";
-
-      document.body.appendChild(clone);
-
-      // Animate to cart
-      setTimeout(() => {
-        clone.style.left = cartRect.left + "px";
-        clone.style.top = cartRect.top + "px";
-        clone.style.transform = "scale(0.3)";
-        clone.style.opacity = "0";
-      }, 100);
-
-      setTimeout(() => {
-        document.body.removeChild(clone);
-        // Bounce cart icon
-        cartIcon.classList.add("bounce-cart");
-        setTimeout(() => cartIcon.classList.remove("bounce-cart"), 600);
-      }, 900);
-    }
-
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 500));
+    await new Promise((resolve) => setTimeout(resolve, 400));
     setIsAdding(false);
     setShowSuccess(true);
   };
-
-  useEffect(() => {
-    const cartProduct = localStorage.getItem("aryan-naturals-cart");
-    if (cartProduct) {
-      try {
-        const parsed = JSON.parse(cartProduct);
-        if (Array.isArray(parsed) && parsed.length > 0) {
-          setShowSuccess(true);
-        }
-      } catch (error) {
-        console.error("Failed to parse cartProduct", error);
-      }
-    }
-  }, []);
 
   return (
     <>
@@ -120,18 +309,15 @@ export function ProductCard({
         <Card
           id={`product-${id}`}
           className="group cursor-pointer overflow-hidden w-40 h-auto sm:w-48 md:w-56 lg:w-64 mx-auto"
-          onMouseEnter={() => setIsHovered(true)}
-          onMouseLeave={() => setIsHovered(false)}
         >
           <CardContent className="p-0">
+            {/* Image + Badge */}
             <div className="relative overflow-hidden rounded-t-md">
               {isNew && (
                 <Badge className="absolute top-1 left-1 z-10 bg-accent text-accent-foreground text-[10px] px-1.5 py-0.5">
                   New
                 </Badge>
               )}
-
-              {/* Smaller image */}
               <div className="relative w-full h-32 sm:h-40 md:h-48">
                 <Image
                   src={image}
@@ -140,7 +326,6 @@ export function ProductCard({
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
                 />
               </div>
-
               {originalPrice && (
                 <Badge className="absolute top-1 right-1 bg-destructive text-destructive-foreground text-[10px] px-1.5 py-0.5">
                   {Math.round(((originalPrice - price) / originalPrice) * 100)}%
@@ -149,6 +334,7 @@ export function ProductCard({
               )}
             </div>
 
+            {/* Content */}
             <div className="p-2 sm:p-3">
               <h3 className="font-semibold text-xs sm:text-sm line-clamp-1">
                 {name}
@@ -157,14 +343,9 @@ export function ProductCard({
                 {tagline}
               </p>
 
-              <div className="flex items-center gap-1 mb-1">
+              <div className="flex items-center gap-1 mb-2">
                 <span className="text-sm sm:text-base font-bold text-primary">
                   ₹{price}
-                  {quantity > 1 && (
-                    <span className="text-xs text-muted-foreground ml-1">
-                      × {quantity} = ₹{price * quantity}
-                    </span>
-                  )}
                 </span>
                 {originalPrice && (
                   <span className="text-[10px] sm:text-xs text-muted-foreground line-through">
@@ -172,46 +353,45 @@ export function ProductCard({
                   </span>
                 )}
               </div>
-              {/* Quantity Selector */}
-              <div className="flex items-center justify-between bg-black rounded-md mt-3 mb-2 overflow-hidden">
-                {/* Minus */}
-                <button
-                  onClick={handleDecrease}
-                  className="flex-1 py-2 text-white text-lg font-bold disabled:opacity-50 disabled:cursor-not-allowed"
-                  disabled={quantity === 0}
-                >
-                  –
-                </button>
 
-                {/* Quantity */}
-                <span className="w-12 text-center bg-white text-black font-semibold py-2">
-                  {quantity}
-                </span>
-
-                {/* Plus */}
-                <button
-                  onClick={handleIncrease}
-                  className="flex-1 py-2 text-white text-lg font-bold"
-                >
-                  +
-                </button>
-              </div>
-
+              {/* --- Add / +/- + Buy --- */}
               <div className="flex gap-2">
-                <Button
-                  onClick={() => {
-                    if (quantity > 0) {
-                      handleAddToCart(); // ab ye cart update karega
-                    }
-                  }}
-                  disabled={isAdding || quantity === 0}
-                  size="sm"
-                  className="flex-[3] h-7 text-[10px] sm:text-xs"
-                >
-                  <ShoppingCart className="w-3 h-3 mr-1" />
-                  Add
-                </Button>
+                {quantity === 0 ? (
+                  <Button
+                    onClick={handleAddToCart}
+                    disabled={isAdding}
+                    size="sm"
+                    className="flex-[3] h-7 text-[10px] sm:text-xs"
+                  >
+                    <ShoppingCart className="w-3 h-3 mr-1" />
+                    Add
+                  </Button>
+                ) : (
+                  <div className="flex items-center justify-between bg-black rounded-md flex-[3] h-7 overflow-hidden">
+                    {/* Minus */}
+                    <button
+                      onClick={() => updateQuantity(id, quantity - 1)}
+                      className="flex-1 text-white text-lg font-bold"
+                    >
+                      –
+                    </button>
 
+                    {/* Qty */}
+                    <span className="w-12 text-center bg-white text-black font-semibold text-xs">
+                      {quantity}
+                    </span>
+
+                    {/* Plus */}
+                    <button
+                      onClick={() => updateQuantity(id, quantity + 1)}
+                      className="flex-1 text-white text-lg font-bold"
+                    >
+                      +
+                    </button>
+                  </div>
+                )}
+
+                {/* Buy button stays same */}
                 <Button
                   variant="outline"
                   size="sm"
@@ -224,12 +404,6 @@ export function ProductCard({
           </CardContent>
         </Card>
       </div>
-
-      {/* <SuccessAnimation
-        show={showSuccess}
-        message="Added to cart successfully!"
-        onComplete={() => setShowSuccess(false)}
-      />  */}
 
       {showSuccess && (
         <NotificationPopUp
