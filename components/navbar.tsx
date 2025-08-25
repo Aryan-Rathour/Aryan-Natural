@@ -21,9 +21,9 @@ export function Navbar() {
               <span className="text-primary-foreground font-bold text-sm">rb</span>
             </div>
             <span className="font-bold text-xl text-primary">Right Basket</span> */}
-          <Link href="/" className="relative w-32 h-12">
+          <Link href="/" className="relative w-50 h-14">
             <Image
-              src="/logo-rb.jpg"
+              src="/rbLogo.png"
               alt="Right Basket Logo"
               fill
               className="object-contain"
