@@ -11,7 +11,8 @@ import { Textarea } from "@/components/ui/textarea"
 import { Badge } from "@/components/ui/badge"
 import { useScrollReveal } from "@/hooks/use-scroll-reveal"
 import { SuccessAnimation } from "@/components/success-animation"
-
+import { Footer } from "@/components/footer"
+import { Navbar } from "@/components/navbar"
 
 const contactInfo = [
   {
@@ -91,6 +92,7 @@ export default function ContactPage() {
   return (
     <>
       <div className="min-h-screen bg-background">
+        <Navbar/>
         {/* Hero Section */}
         <div className="bg-muted/30 py-16">
           <div className="container mx-auto px-4 text-center">
@@ -274,6 +276,7 @@ export default function ContactPage() {
             </Card>
           </div>
         </div>
+        <Footer/>
       </div>
 
       <SuccessAnimation

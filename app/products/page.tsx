@@ -7,7 +7,8 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Badge } from "@/components/ui/badge"
 import { ProductCard } from "@/components/product-card"
 import { useScrollReveal } from "@/hooks/use-scroll-reveal"
-
+import { Footer } from "@/components/footer"
+import { Navbar } from "@/components/navbar"
 
 const products = [
   {
@@ -140,6 +141,7 @@ export default function ProductsPage() {
 
   return (
     <div className="min-h-screen bg-background">
+      <Navbar/>
       {/* Header */}
       <div className="bg-muted/30 py-12">
         <div className="container mx-auto px-4 text-center">
@@ -291,6 +293,7 @@ export default function ProductsPage() {
           </div>
         )}
       </div>
+      <Footer/>
     </div>
   )
 }

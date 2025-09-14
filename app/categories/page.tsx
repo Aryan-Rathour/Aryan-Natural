@@ -3,7 +3,8 @@ import Link from "next/link"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { useScrollReveal } from "@/hooks/use-scroll-reveal"
-
+import { Footer } from "@/components/footer"
+import { Navbar } from "@/components/navbar"
 
 const categories = [
   {
@@ -66,7 +67,9 @@ export default function CategoriesPage() {
   const scrollRef = useScrollReveal()
 
   return (
+    <div>
     <div className="min-h-screen bg-background">
+      <Navbar/>
       {/* Header */}
       <div className="bg-muted/30 py-12">
         <div className="container mx-auto px-4 text-center">
@@ -157,6 +160,8 @@ export default function CategoriesPage() {
           </div>
         </div>
       </div>
+    </div>
+    <Footer/>
     </div>
   )
 }

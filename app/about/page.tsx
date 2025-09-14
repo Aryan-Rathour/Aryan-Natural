@@ -3,6 +3,9 @@
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { useScrollReveal } from "@/hooks/use-scroll-reveal"
+// import { Footer } from "react-day-picker"
+import { Footer } from "@/components/footer"
+import { Navbar } from "@/components/navbar"
 
 
 
@@ -58,6 +61,7 @@ export default function AboutPage() {
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
+      <Navbar/>
       <div className="bg-muted/30 py-16">
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6 animate-fade-in-up">Our Story</h1>
@@ -206,6 +210,8 @@ export default function AboutPage() {
           </div>
         </div>
       </div>
+            <Footer/>
+
     </div>
   )
 }

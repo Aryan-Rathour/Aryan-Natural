@@ -8,6 +8,8 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Separator } from "@/components/ui/separator"
 import { useCart } from "@/contexts/cart-context"
+import { Footer } from "@/components/footer"
+import { Navbar } from "@/components/navbar"
 
 export default function CartPage() {
   const { state, updateQuantity, removeItem, clearCart } = useCart()
@@ -49,6 +51,7 @@ export default function CartPage() {
 
   return (
     <div className="min-h-screen bg-background">
+      <Navbar/>
       <div className="container mx-auto px-4 py-8">
         {/* Header */}
         <div className="mb-8">
@@ -215,6 +218,7 @@ export default function CartPage() {
           </div>
         </div>
       </div>
+      <Footer/>
     </div>
   )
 }
