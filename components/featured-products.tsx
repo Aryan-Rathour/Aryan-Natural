@@ -88,11 +88,11 @@ export function FeaturedProducts() {
 
         {/* Mobile: 2 cols, Tablet: 3 cols, Medium: 4 cols, Laptop+: Center with less gap */}
         <div className="
-          grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 
-          lg:flex lg:flex-wrap lg:justify-center lg:gap-4
+          grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 
+          lg:flex lg:flex-wrap lg:justify-center lg:gap-4 
         ">
           {featuredProducts.map((product) => (
-            <div key={product.id} className="lg:flex-shrink-0">
+            <div key={product.id} className="lg:flex-shrink-0 my-2">
               <ProductCard {...product} />
             </div>
           ))}

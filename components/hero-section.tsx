@@ -5,7 +5,7 @@ import Link from "next/link"
 
 export function HeroSection() {
   return (
-    <section className="relative min-h-[70vh] flex items-center justify-center bg-gradient-to-br from-muted to-background overflow-hidden">
+    <section className="relative py-4 flex items-center justify-center bg-gradient-to-br from-muted to-background overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-10">
         <div
