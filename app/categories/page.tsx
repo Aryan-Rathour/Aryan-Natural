@@ -84,8 +84,8 @@ export default function CategoriesPage() {
         </div>
       </div>
 
-      <div className="container mx-auto px-4 py-12">
-        <div ref={scrollRef} className="scroll-reveal grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div className="container mx-auto px-4">
+        <div ref={scrollRef} className="scroll-reveal grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
           {categories.map((category, index) => (
             <Link key={category.id} href={`/categories/${category.id}`}>
               <Card className="group cursor-pointer product-card-hover h-full">
@@ -103,7 +103,7 @@ export default function CategoriesPage() {
                     </div>
                   </div>
 
-                  <div className="p-6">
+                  <div className="p-2">
                     <h3 className="text-xl font-semibold mb-3 group-hover:text-primary transition-colors">
                       {category.name}
                     </h3>
