@@ -2,16 +2,28 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { ShoppingCart, Menu, X,User } from "lucide-react";
+import { ShoppingCart, Menu, X, User } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { useCart } from "@/contexts/cart-context";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
+
 // import ProfileSidebar from "@/components/user/ProfileSidebar"; // 👈 Import your ProfileSidebar
 
 export function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { state } = useCart();
+
+  const pathname = usePathname();
+
+  const links = [
+    { href: "/", label: "Home" },
+    { href: "/products", label: "Products" },
+    { href: "/categories", label: "Categories" },
+    { href: "/about", label: "About Us" },
+    { href: "/contact", label: "Contact" },
+  ];
 
   return (
     <nav className="bg-primary-color sticky top-0 z-50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b">
@@ -29,41 +41,24 @@ export function Navbar() {
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-8 nav-links">
-            <Link
-              href="/"
-              className="text-foreground hover:text-primary transition-colors relative group"
-            >
-              Home
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full"></span>
-            </Link>
-            <Link
-              href="/products"
-              className="text-foreground hover:text-primary transition-colors relative group"
-            >
-              Products
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full"></span>
-            </Link>
-            <Link
-              href="/categories"
-              className="text-foreground hover:text-primary transition-colors relative group"
-            >
-              Categories
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full"></span>
-            </Link>
-            <Link
-              href="/about"
-              className="text-foreground hover:text-primary transition-colors relative group"
-            >
-              About Us
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full"></span>
-            </Link>
-            <Link
-              href="/contact"
-              className="text-foreground hover:text-primary transition-colors relative group"
-            >
-              Contact
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full"></span>
-            </Link>
+            {links.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={`relative group ${
+                  pathname === link.href
+                    ? "text-primary font-semibold"
+                    : "text-foreground hover:text-primary"
+                }`}
+              >
+                {link.label}
+                <span
+                  className={`absolute -bottom-1 left-0 h-0.5 bg-primary transition-all ${
+                    pathname === link.href ? "w-full" : "w-0 group-hover:w-full"
+                  }`}
+                ></span>
+              </Link>
+            ))}
           </div>
 
           {/* Cart & Profile & Mobile Menu */}
@@ -86,9 +81,9 @@ export function Navbar() {
 
             {/* Profile Sidebar (👈 new component here) */}
             {/* <ProfileSidebar name="Shivank" phone="+91 98765 43210" /> */}
- <Link href="/profile">
-          <User size={24} className="cursor-pointer" />
-        </Link>
+            <Link href="/profile">
+              <User size={24} className="cursor-pointer" />
+            </Link>
             {/* Mobile Menu Button */}
             <Button
               variant="ghost"
@@ -109,19 +104,34 @@ export function Navbar() {
         {isMenuOpen && (
           <div className="md:hidden py-4 border-t animate-slide-in-bottom">
             <div className="flex flex-col space-y-4">
-              <Link href="/" className="text-foreground hover:text-primary transition-colors">
+              <Link
+                href="/"
+                className="text-foreground hover:text-primary transition-colors"
+              >
                 Home
               </Link>
-              <Link href="/products" className="text-foreground hover:text-primary transition-colors">
+              <Link
+                href="/products"
+                className="text-foreground hover:text-primary transition-colors"
+              >
                 Products
               </Link>
-              <Link href="/categories" className="text-foreground hover:text-primary transition-colors">
+              <Link
+                href="/categories"
+                className="text-foreground hover:text-primary transition-colors"
+              >
                 Categories
               </Link>
-              <Link href="/about" className="text-foreground hover:text-primary transition-colors">
+              <Link
+                href="/about"
+                className="text-foreground hover:text-primary transition-colors"
+              >
                 About Us
               </Link>
-              <Link href="/contact" className="text-foreground hover:text-primary transition-colors">
+              <Link
+                href="/contact"
+                className="text-foreground hover:text-primary transition-colors"
+              >
                 Contact
               </Link>
             </div>
