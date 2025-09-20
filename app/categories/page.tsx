@@ -71,7 +71,7 @@ export default function CategoriesPage() {
     <div className="min-h-screen bg-background">
       <Navbar/>
       {/* Header */}
-      <div className="bg-muted/30 py-12">
+      <div className="bg-muted/30 py-6">
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-4xl font-bold text-foreground mb-4 animate-fade-in-up">Product Categories</h1>
           <p
@@ -85,7 +85,7 @@ export default function CategoriesPage() {
       </div>
 
       <div className="container mx-auto px-4 py-12">
-        <div ref={scrollRef} className="scroll-reveal grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div ref={scrollRef} className="scroll-reveal grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {categories.map((category, index) => (
             <Link key={category.id} href={`/categories/${category.id}`}>
               <Card className="group cursor-pointer product-card-hover h-full">
