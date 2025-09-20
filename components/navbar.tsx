@@ -2,12 +2,12 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { ShoppingCart, Menu, X } from "lucide-react";
+import { ShoppingCart, Menu, X,User } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { useCart } from "@/contexts/cart-context";
 import Image from "next/image";
-import ProfileSidebar from "@/components/user/ProfileSidebar"; // 👈 Import your ProfileSidebar
+// import ProfileSidebar from "@/components/user/ProfileSidebar"; // 👈 Import your ProfileSidebar
 
 export function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -85,8 +85,10 @@ export function Navbar() {
             </Link>
 
             {/* Profile Sidebar (👈 new component here) */}
-            <ProfileSidebar name="Shivank" phone="+91 98765 43210" />
-
+            {/* <ProfileSidebar name="Shivank" phone="+91 98765 43210" /> */}
+ <Link href="/profile">
+          <User size={24} className="cursor-pointer" />
+        </Link>
             {/* Mobile Menu Button */}
             <Button
               variant="ghost"
