@@ -1,14 +1,20 @@
-"use client"
-import { useState, useMemo } from "react"
-import { Search, Grid, List } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Badge } from "@/components/ui/badge"
-import { ProductCard } from "@/components/product-card"
-import { useScrollReveal } from "@/hooks/use-scroll-reveal"
-import { Footer } from "@/components/footer"
-import { Navbar } from "@/components/navbar"
+"use client";
+import { useState, useMemo } from "react";
+import { Search, Grid, List } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Badge } from "@/components/ui/badge";
+import { ProductCard } from "@/components/product-card";
+import { useScrollReveal } from "@/hooks/use-scroll-reveal";
+import { Footer } from "@/components/footer";
+import { Navbar } from "@/components/navbar";
 
 const products = [
   {
@@ -40,8 +46,7 @@ const products = [
     rating: 4.6,
     tagline: "Authentic Flattened Rice",
     category: "Grains",
-        isNew: true,
-
+    isNew: true,
   },
   {
     id: "4",
@@ -91,74 +96,87 @@ const products = [
     tagline: "Traditional Butter Sugar",
     category: "Sweeteners",
   },
-]
+];
 
-const categories = ["All", "Snacks", "Grains", "Sweeteners", "Health Foods", "Seeds & Nuts"]
+const categories = [
+  "All",
+  "Snacks",
+  "Grains",
+  "Sweeteners",
+  "Health Foods",
+  "Seeds & Nuts",
+];
 const sortOptions = [
   { value: "name", label: "Name A-Z" },
   { value: "price-low", label: "Price: Low to High" },
   { value: "price-high", label: "Price: High to Low" },
   { value: "rating", label: "Highest Rated" },
   { value: "newest", label: "Newest First" },
-]
+];
 
 export default function ProductsPage() {
-  const [searchTerm, setSearchTerm] = useState("")
-  const [selectedCategory, setSelectedCategory] = useState("All")
-  const [sortBy, setSortBy] = useState("name")
-  const [viewMode, setViewMode] = useState<"grid" | "list">("grid")
-  const scrollRef = useScrollReveal()
+  const [searchTerm, setSearchTerm] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("All");
+  const [sortBy, setSortBy] = useState("name");
+  const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
+  const scrollRef = useScrollReveal();
 
   const filteredAndSortedProducts = useMemo(() => {
     const filtered = products.filter((product) => {
       const matchesSearch =
         product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        product.tagline.toLowerCase().includes(searchTerm.toLowerCase())
-      const matchesCategory = selectedCategory === "All" || product.category === selectedCategory
-      return matchesSearch && matchesCategory
-    })
+        product.tagline.toLowerCase().includes(searchTerm.toLowerCase());
+      const matchesCategory =
+        selectedCategory === "All" || product.category === selectedCategory;
+      return matchesSearch && matchesCategory;
+    });
 
     // Sort products
     filtered.sort((a, b) => {
       switch (sortBy) {
         case "name":
-          return a.name.localeCompare(b.name)
+          return a.name.localeCompare(b.name);
         case "price-low":
-          return a.price - b.price
+          return a.price - b.price;
         case "price-high":
-          return b.price - a.price
+          return b.price - a.price;
         case "rating":
-          return b.rating - a.rating
+          return b.rating - a.rating;
         case "newest":
-          return (b.isNew ? 1 : 0) - (a.isNew ? 1 : 0)
+          return (b.isNew ? 1 : 0) - (a.isNew ? 1 : 0);
         default:
-          return 0
+          return 0;
       }
-    })
+    });
 
-    return filtered
-  }, [searchTerm, selectedCategory, sortBy])
+    return filtered;
+  }, [searchTerm, selectedCategory, sortBy]);
 
   return (
     <div className="min-h-screen bg-background">
-      <Navbar/>
+      <Navbar />
       {/* Header */}
       <div className="bg-muted/30 py-12">
         <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl font-bold text-foreground mb-4 animate-fade-in-up">Our Products</h1>
+          <h1 className="text-4xl font-bold text-foreground mb-4 animate-fade-in-up">
+            Our Products
+          </h1>
           <p
             className="text-lg text-muted-foreground max-w-2xl mx-auto animate-fade-in-up"
             style={{ animationDelay: "0.2s" }}
           >
-            Discover our complete range of authentic traditional Indian organic foods, handpicked from local farmers
-            across Bihar.
+            Discover our complete range of authentic traditional Indian organic
+            foods, handpicked from local farmers across Bihar.
           </p>
         </div>
       </div>
 
       <div className="container mx-auto px-4 py-8">
         {/* Filters & Search */}
-        <div className="flex flex-col lg:flex-row gap-4 mb-8 animate-fade-in-up" style={{ animationDelay: "0.4s" }}>
+        <div
+          className="flex flex-col lg:flex-row gap-4 mb-8 animate-fade-in-up"
+          style={{ animationDelay: "0.4s" }}
+        >
           {/* Search */}
           <div className="relative flex-1">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
@@ -200,10 +218,18 @@ export default function ProductsPage() {
 
           {/* View Mode */}
           <div className="flex gap-2">
-            <Button variant={viewMode === "grid" ? "default" : "outline"} size="sm" onClick={() => setViewMode("grid")}>
+            <Button
+              variant={viewMode === "grid" ? "default" : "outline"}
+              size="sm"
+              onClick={() => setViewMode("grid")}
+            >
               <Grid className="w-4 h-4" />
             </Button>
-            <Button variant={viewMode === "list" ? "default" : "outline"} size="sm" onClick={() => setViewMode("list")}>
+            <Button
+              variant={viewMode === "list" ? "default" : "outline"}
+              size="sm"
+              onClick={() => setViewMode("list")}
+            >
               <List className="w-4 h-4" />
             </Button>
           </div>
@@ -214,7 +240,10 @@ export default function ProductsPage() {
           {selectedCategory !== "All" && (
             <Badge variant="secondary" className="flex items-center gap-2">
               Category: {selectedCategory}
-              <button onClick={() => setSelectedCategory("All")} className="ml-1 hover:text-destructive">
+              <button
+                onClick={() => setSelectedCategory("All")}
+                className="ml-1 hover:text-destructive"
+              >
                 ×
               </button>
             </Badge>
@@ -222,7 +251,10 @@ export default function ProductsPage() {
           {searchTerm && (
             <Badge variant="secondary" className="flex items-center gap-2">
               Search: "{searchTerm}"
-              <button onClick={() => setSearchTerm("")} className="ml-1 hover:text-destructive">
+              <button
+                onClick={() => setSearchTerm("")}
+                className="ml-1 hover:text-destructive"
+              >
                 ×
               </button>
             </Badge>
@@ -232,7 +264,8 @@ export default function ProductsPage() {
         {/* Results Count */}
         <div className="mb-6">
           <p className="text-muted-foreground">
-            Showing {filteredAndSortedProducts.length} of {products.length} products
+            Showing {filteredAndSortedProducts.length} of {products.length}{" "}
+            products
           </p>
         </div>
 
@@ -245,9 +278,12 @@ export default function ProductsPage() {
               ))}
             </div>
           ) : (
-            <div className="space-y-4">
+            <div className="space-y-4 min-w-full overflow-x-hidden">
               {filteredAndSortedProducts.map((product) => (
-                <div key={product.id} className="flex gap-4 p-4 border rounded-lg hover:shadow-md transition-shadow">
+                <div
+                  key={product.id}
+                  className="flex gap-4 p-4 border rounded-lg hover:shadow-md transition-shadow w-full"
+                >
                   <div className="w-24 h-24 relative flex-shrink-0">
                     <img
                       src={product.image || "/placeholder.svg"}
@@ -257,18 +293,35 @@ export default function ProductsPage() {
                   </div>
                   <div className="flex-1">
                     <h3 className="font-semibold text-lg">{product.name}</h3>
-                    <p className="text-muted-foreground text-sm">{product.tagline}</p>
+                    <p className="text-muted-foreground text-sm">
+                      {product.tagline}
+                    </p>
                     <div className="flex items-center gap-2 mt-2">
-                      <span className="text-xl font-bold text-primary">₹{product.price}</span>
+                      <span className="text-xl font-bold text-primary">
+                        ₹{product.price}
+                      </span>
                       {product.originalPrice && (
-                        <span className="text-sm text-muted-foreground line-through">₹{product.originalPrice}</span>
+                        <span className="text-sm text-muted-foreground line-through">
+                          ₹{product.originalPrice}
+                        </span>
                       )}
-                      <Badge variant="outline">{product.category}</Badge>
+                      <Badge
+                        className="hidden md:inline-block"
+                        variant="outline"
+                      >
+                        {product.category}
+                      </Badge>
                     </div>
                   </div>
-                  <div className="flex flex-col gap-2">
-                    <Button size="sm">Add to Cart</Button>
-                    <Button variant="outline" size="sm">
+                  <div className="flex flex-col sm:flex-row gap-2 flex-wrap ">
+                    <Button size="sm" className="whitespace-nowrap">
+                      Add to Cart
+                    </Button>
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      className="whitespace-nowrap"
+                    >
                       View Details
                     </Button>
                   </div>
@@ -281,11 +334,13 @@ export default function ProductsPage() {
         {/* No Results */}
         {filteredAndSortedProducts.length === 0 && (
           <div className="text-center py-12">
-            <p className="text-muted-foreground text-lg mb-4">No products found matching your criteria.</p>
+            <p className="text-muted-foreground text-lg mb-4">
+              No products found matching your criteria.
+            </p>
             <Button
               onClick={() => {
-                setSearchTerm("")
-                setSelectedCategory("All")
+                setSearchTerm("");
+                setSelectedCategory("All");
               }}
             >
               Clear Filters
@@ -293,7 +348,7 @@ export default function ProductsPage() {
           </div>
         )}
       </div>
-      <Footer/>
+      <Footer />
     </div>
-  )
+  );
 }
