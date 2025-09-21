@@ -13,6 +13,7 @@ import {
   MenuIcon,
   XIcon,
 } from "lucide-react";
+import { Navbar } from "@/components/navbar";
 
 export default function ProfileLayout({ children }: { children: ReactNode }) {
   const pathname = usePathname();
@@ -28,6 +29,7 @@ export default function ProfileLayout({ children }: { children: ReactNode }) {
 
   return (
     <>
+    <Navbar/>
       <div className="md:hidden flex justify-between items-center p-4 bg-white border-b">
         <button onClick={() => setSidebarOpen(true)}>
           <MenuIcon className="w-6 h-6" />
