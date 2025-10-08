@@ -6,7 +6,7 @@ import { Card, CardContent } from "@/components/ui/card"
 const categories = [
   {
     name: "Murmura",
-    icon: "/placeholder-112pq.png",
+    icon: "/premium-puffed-rice-murmura.png",
     description: "Crispy puffed rice",
     href: "/categories/murmura",
   },
@@ -18,7 +18,7 @@ const categories = [
   },
   {
     name: "Chana",
-    icon: "/placeholder-zwkkm.png",
+    icon: "/chana-product.jpg",
     description: "Roasted chickpeas",
     href: "/categories/chana",
   },
@@ -62,7 +62,7 @@ export function CategoriesSection() {
                     <img
                       src={category.icon || "/placeholder.svg"}
                       alt={category.name}
-                      className="w-12 h-12 object-contain"
+                      className="w-full h-full object-cover rounded-full"
                     />
                   </div>
                   <h3 className="font-semibold text-lg mb-1">{category.name}</h3>

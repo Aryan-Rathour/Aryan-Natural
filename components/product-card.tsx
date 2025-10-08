@@ -318,12 +318,12 @@ export function ProductCard({
                   New
                 </Badge>
               )}
-              <div className="relative w-full h-32 sm:h-40 md:h-48">
+              <div className="relative w-full h-32 sm:h-40 md:h-48 ">
                 <Image
                   src={image}
                   alt={name}
                   fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="object-cover transition-transform duration-500 group-hover:scale-105 p-4"
                 />
               </div>
               {originalPrice && (
