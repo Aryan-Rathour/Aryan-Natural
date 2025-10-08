@@ -4,6 +4,7 @@ import { Poppins, Lato, Caveat } from "next/font/google"
 import './globals.css';
 import { CartProvider } from "@/contexts/cart-context"
 import { generateOrganizationSchema , generateWebsiteSchema } from "@/lib/schema";
+import NotificationPopUp from "@/components/itemAdded";
 
 
 const poppins = Poppins({
@@ -166,7 +167,10 @@ export default function RootLayout({
       </head>
 
       <body>
-        <CartProvider>{children}</CartProvider>
+        <CartProvider>{children}
+          <NotificationPopUp/>
+        </CartProvider>
+
       </body>
     </html>
   )
