@@ -29,7 +29,7 @@ const NotificationPopUp = ({ onViewCart }) => {
 
   // ✅ Create dynamic message
   const itemCount = state.items.length;
-  const message = `You have ${itemCount} item${itemCount > 1 ? "s" : ""} in your cart`;
+const message = `${itemCount} item${itemCount !== 1 ? "s" : ""} added`;
 
   return (
     <div className="z-50 fixed bottom-5 left-1/2 transform -translate-x-1/2 flex items-center justify-between w-[70vw] max-w-md sm:max-w-lg md:max-w-xl bg-green-500 text-white px-4 py-2 rounded shadow-lg">

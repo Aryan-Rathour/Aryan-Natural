@@ -57,7 +57,7 @@ export default function CartPage() {
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-foreground mb-2 animate-fade-in-up">Shopping Cart</h1>
           <p className="text-muted-foreground animate-fade-in-up" style={{ animationDelay: "0.1s" }}>
-            {state.itemCount} {state.itemCount === 1 ? "item" : "items"} in your cart
+            {state.itemCount} {state.itemCount === 1 ? "item" : "items"} added
           </p>
         </div>
 
