@@ -347,7 +347,7 @@ export function ProductCard({
                   src={image}
                   alt={name}
                   fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-105 p-4"
+                  className="bg-gray-50 object-contain transition-transform duration-500 group-hover:scale-105 p-4"
                 />
               </div>
               {/* {originalPrice && (
