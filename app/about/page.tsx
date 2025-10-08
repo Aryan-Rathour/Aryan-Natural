@@ -83,7 +83,7 @@ export default function AboutPage() {
               <Badge className="mb-4 bg-primary/10 text-primary">Our Mission</Badge>
               <h2 className="text-3xl font-bold text-foreground mb-6">Preserving Tradition, Delivering Purity</h2>
               <p className="text-muted-foreground leading-relaxed mb-6">
-                At Aryan Naturals, we believe that the best foods come from the earth, prepared the way our ancestors
+                At Right Basket, we believe that the best foods come from the earth, prepared the way our ancestors
                 did. Our mission is to bring you authentic traditional Indian foods that are not just delicious, but
                 also nutritious and completely natural.
               </p>
@@ -162,7 +162,7 @@ export default function AboutPage() {
         <div ref={scrollRef} className="scroll-reveal">
           <div className="text-center mb-12">
             <Badge className="mb-4 bg-primary/10 text-primary">Our Team</Badge>
-            <h2 className="text-3xl font-bold text-foreground mb-4">The People Behind Aryan Naturals</h2>
+            <h2 className="text-3xl font-bold text-foreground mb-4">The People Behind Right Basket</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
               Meet the passionate individuals who work tirelessly to bring you the finest traditional foods.
             </p>

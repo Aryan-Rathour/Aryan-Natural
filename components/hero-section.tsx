@@ -21,9 +21,9 @@ export function HeroSection() {
       <div className="container mx-auto px-4 text-center relative z-10">
         <div className="max-w-4xl mx-auto">
           <h1 className="primary text-4xl md:text-6xl font-bold text-foreground mb-6 leading-tight animate-fade-in-up">
-            Fresh <span className="secondary">&</span> Healthy Roasted  Foods
+            Empowering <span className="secondary"> </span> Local Businesses,
             <br />
-            <span className="primary">from Bihar to Your Plate</span>
+            <span className="primary">Delivering Quality to Every Home.</span>
           </h1>
 
           <p

@@ -17,7 +17,7 @@ export default function Map() {
       />
       <Marker position={[25.5941, 85.1376]}>
         <Popup>
-          Aryan Naturals Farm <br /> Rampur, Patna, Bihar
+          Right Basket Farm <br /> Rampur, Patna, Bihar
         </Popup>
       </Marker>
     </MapContainer>

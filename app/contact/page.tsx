@@ -23,7 +23,7 @@ const contactInfo = [
     icon: MapPin,
     title: "Our Location",
     details: [
-      "Aryan Naturals Farm",
+      "Right Basket Farm",
       "Village Rampur, District Patna",
       "Bihar 801503, India",
     ],

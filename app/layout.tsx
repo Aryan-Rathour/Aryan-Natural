@@ -27,7 +27,7 @@ const caveat = Caveat({
 })
 
 // export const metadata: Metadata = {
-//   title: "Aryan Naturals - Pure & Natural Foods from Bihar",
+//   title: "Right Basket - Pure & Natural Foods from Bihar",
 //   description:
 //     "Traditional Indian organic food products like Murmura, Chana, Chura, Gurh, Khell, Shattu delivered fresh to your doorstep",
 //      icons: {

@@ -96,7 +96,7 @@ export function Footer() {
 
         <div className="border-t border-secondary-foreground/20 mt-8 pt-8 text-center">
           <p className="text-secondary-foreground/80">
-            © 2024 Aryan Naturals. All rights reserved. | Made with ❤️ in Bihar
+            © 2024 Right Basket. All rights reserved.
           </p>
         </div>
       </div>

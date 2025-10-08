@@ -207,7 +207,7 @@ export default function OurStoryPage() {
         <div ref={scrollRef} className="scroll-reveal text-center">
           <h2 className="text-3xl font-bold text-foreground mb-4">Join Our Story</h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8">
-            When you choose Aryan Naturals, you become part of our story. You support traditional farming, help preserve
+            When you choose Right Basket, you become part of our story. You support traditional farming, help preserve
             cultural heritage, and bring authentic flavors to your family.
           </p>
           <Link href="/products">
