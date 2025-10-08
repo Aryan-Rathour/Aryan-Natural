@@ -252,6 +252,7 @@ import { ShoppingCart } from "lucide-react";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 import { useCart } from "@/contexts/cart-context";
 import NotificationPopUp from "./itemAdded";
+import { useRouter } from "next/navigation";
 
 interface ProductCardProps {
   id: string;
@@ -279,6 +280,8 @@ export function ProductCard({
   const [showSuccess, setShowSuccess] = useState(false);
   const scrollRef = useScrollReveal();
 
+  const router = useRouter();
+
   const { state, addItem, updateQuantity } = useCart();
 
   // check if item already exists in cart
@@ -303,6 +306,27 @@ export function ProductCard({
     setShowSuccess(true);
   };
 
+  const handleBuyNow = async () => {
+    // if item not in cart → add first
+    if (quantity === 0) {
+      addItem({
+        id,
+        name,
+        price,
+        originalPrice,
+        image,
+        category,
+        quantity: 1,
+      });
+    }
+
+    // small delay for smoother UX
+    await new Promise((resolve) => setTimeout(resolve, 200));
+
+    // redirect to cart page
+    router.push("/cart");
+  };
+
   return (
     <>
       <div ref={scrollRef} className="scroll-reveal">
@@ -313,11 +337,11 @@ export function ProductCard({
           <CardContent className="p-0">
             {/* Image + Badge */}
             <div className="relative overflow-hidden rounded-t-md">
-              {isNew && (
+              {/* {isNew && (
                 <Badge className="absolute top-1 left-1 z-10 bg-accent text-accent-foreground text-[10px] px-1.5 py-0.5">
-                  New
+                  20 %
                 </Badge>
-              )}
+              )} */}
               <div className="relative w-full h-32 sm:h-40 md:h-48 ">
                 <Image
                   src={image}
@@ -326,10 +350,16 @@ export function ProductCard({
                   className="object-cover transition-transform duration-500 group-hover:scale-105 p-4"
                 />
               </div>
-              {originalPrice && (
+              {/* {originalPrice && (
                 <Badge className="absolute top-1 right-1 bg-destructive text-destructive-foreground text-[10px] px-1.5 py-0.5">
-                  {Math.round(((originalPrice - price) / originalPrice) * 100)}%
+                  {Math.round(((originalPrice - price) / originalPrice) * 100)}
                   OFF
+                </Badge>
+              )} */}
+
+              {isNew && (
+                <Badge className="absolute top-1 right-1 bg-destructive text-white text-[10px] px-1.5 py-0.5">
+                  20 % OFF
                 </Badge>
               )}
             </div>
@@ -396,6 +426,7 @@ export function ProductCard({
                   variant="outline"
                   size="sm"
                   className="flex-[2] h-7 px-2 text-[10px] sm:text-xs bg-transparent"
+                  onClick={handleBuyNow}
                 >
                   Buy
                 </Button>

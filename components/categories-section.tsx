@@ -55,7 +55,7 @@ export function CategoriesSection() {
 
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
           {categories.map((category, index) => (
-            <Link key={category.name} href={category.href}>
+            <Link key={category.name} href='/categories'>
               <Card className="group hover:shadow-lg transition-all duration-300 hover:scale-105 cursor-pointer">
                 <CardContent className="p-6 text-center">
                   <div className="w-20 h-20 mx-auto mb-4 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
