@@ -58,7 +58,7 @@ export default function ProfileLayout({ children }: { children: ReactNode }) {
               </div>
               <div>
                 <p className="font-semibold">Shivank</p>
-                <p className="text-sm text-gray-500">8355078409</p>
+                <p className="text-sm text-gray-500">6386444795</p>
               </div>
             </div>
             <button onClick={() => setSidebarOpen(false)}>
