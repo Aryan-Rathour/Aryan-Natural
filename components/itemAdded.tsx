@@ -22,7 +22,7 @@ const NotificationPopUp = ({ onViewCart }) => {
   }, [state.items]);
 
   // ✅ Hide on /cart page
-  if (pathname === "/cart") return null;
+  if (pathname === "/cart" || pathname === "/checkout") return null;
 
   // ✅ Hide if no item in cart
   if (!show) return null;

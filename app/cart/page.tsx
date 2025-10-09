@@ -140,8 +140,11 @@ export default function CartPage() {
                             </Button>
                           </div>
 
-                          <div className="text-right min-w-[4rem]">
-                            <span className="font-semibold">₹{item.price * item.quantity}</span>
+                          <div className="flex flex-col text-right min-w-[4rem]">
+                            <span className="font-semibold">₹{item.price * item.quantity}</span>{item.originalPrice && (
+                            <p className="text-sm text-green-500">Saved: <span > ₹{item.originalPrice - item.price}</span></p>
+                          )}
+
                           </div>
                         </div>
                       </div>

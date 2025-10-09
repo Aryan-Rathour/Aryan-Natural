@@ -133,7 +133,7 @@ export function PaymentMethods({ selectedMethod, onMethodChange, onPaymentComple
           </Card>
         )}
 
-        {/* Credit/Debit Card */}
+        {/* Credit/Debit Card
         <div className="flex items-center space-x-2 p-4 border rounded-lg">
           <RadioGroupItem value="card" id="card" />
           <Label htmlFor="card" className="flex-1 cursor-pointer">
@@ -197,10 +197,10 @@ export function PaymentMethods({ selectedMethod, onMethodChange, onPaymentComple
               </Button>
             </CardContent>
           </Card>
-        )}
+        )} */}
 
         {/* Net Banking */}
-        <div className="flex items-center space-x-2 p-4 border rounded-lg">
+        {/* <div className="flex items-center space-x-2 p-4 border rounded-lg">
           <RadioGroupItem value="netbanking" id="netbanking" />
           <Label htmlFor="netbanking" className="flex-1 cursor-pointer">
             <div className="flex items-center gap-3">
@@ -237,10 +237,10 @@ export function PaymentMethods({ selectedMethod, onMethodChange, onPaymentComple
               </Button>
             </CardContent>
           </Card>
-        )}
+        )} */}
 
         {/* Digital Wallets */}
-        <div className="flex items-center space-x-2 p-4 border rounded-lg">
+        {/* <div className="flex items-center space-x-2 p-4 border rounded-lg">
           <RadioGroupItem value="wallet" id="wallet" />
           <Label htmlFor="wallet" className="flex-1 cursor-pointer">
             <div className="flex items-center gap-3">
@@ -251,7 +251,7 @@ export function PaymentMethods({ selectedMethod, onMethodChange, onPaymentComple
               </div>
             </div>
           </Label>
-        </div>
+        </div> */}
 
         {selectedMethod === "wallet" && (
           <Card className="ml-8 animate-fade-in-up">
