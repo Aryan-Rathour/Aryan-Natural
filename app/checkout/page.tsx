@@ -11,6 +11,7 @@ import { Badge } from "@/components/ui/badge";
 import { useCart } from "@/contexts/cart-context";
 import { SuccessAnimation } from "@/components/success-animation";
 import { PaymentMethods } from "@/components/payment-methods";
+import { Navbar } from "@/components/navbar";
 
 const steps = [
   { id: 1, name: "Shipping", icon: Truck },
@@ -93,6 +94,7 @@ export default function CheckoutPage() {
 
   return (
     <>
+      <Navbar />
       <div className="min-h-screen bg-background flex flex-col justify-center lg:justify-start">
         <div className="container mx-auto px-4 py-4 sm:py-8">
           {/* Header */}
@@ -242,23 +244,6 @@ export default function CheckoutPage() {
                       </div>
                     </div>
 
-                    <div>
-                      <Label htmlFor="address" className="mb-2 block">
-                        Address
-                      </Label>
-                      <Input
-                        id="address"
-                        value={shippingInfo.address}
-                        onChange={(e) =>
-                          setShippingInfo({
-                            ...shippingInfo,
-                            address: e.target.value,
-                          })
-                        }
-                        placeholder="Enter full address"
-                      />
-                    </div>
-
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                       <div>
                         <Label htmlFor="city" className="mb-2 block">
@@ -307,6 +292,104 @@ export default function CheckoutPage() {
                           }
                           placeholder="Enter pincode"
                         />
+                      </div>
+                    </div>
+
+                    <div>
+                      <Label className="mb-3 text-base font-semibold text-foreground">
+                        Select Address
+                      </Label>
+
+                      <div className="space-y-4">
+                        {/* Address Options */}
+                        {[
+                          {
+                            label: "Home",
+                            value: "Home",
+                            address: "123 Main Street, Springfield",
+                          },
+                          {
+                            label: "Office",
+                            value: "Office",
+                            address: "456 Park Avenue, Metropolis",
+                          },
+                          {
+                            label: "Add New Address",
+                            value: "New",
+                            address: "",
+                          },
+                        ].map((option) => (
+                          <div
+                            key={option.value}
+                            className={`flex items-center gap-3 px-2 rounded-xl border transition-all cursor-pointer ${
+                              shippingInfo.addressOption === option.value
+                                ? "border-red-300 bg-pink-200 shadow-sm"
+                                : "border-muted hover:border-primary/50 hover:bg-muted/50"
+                            }`}
+                            onClick={() =>
+                              setShippingInfo({
+                                ...shippingInfo,
+                                addressOption: option.value,
+                                address:
+                                  option.value === "New" ? "" : option.address,
+                              })
+                            }
+                          >
+                            <input
+                              type="radio"
+                              name="addressOption"
+                              value={option.value}
+                              checked={
+                                shippingInfo.addressOption === option.value
+                              }
+                              onChange={() =>
+                                setShippingInfo({
+                                  ...shippingInfo,
+                                  addressOption: option.value,
+                                  address:
+                                    option.value === "New"
+                                      ? ""
+                                      : option.address,
+                                })
+                              }
+                              className="mt-1 accent-primary cursor-pointer"
+                            />
+                            <div>
+                              <p className="font-medium text-foreground">
+                                {option.label}
+                              </p>
+                              {option.value !== "New" && (
+                                <p className="text-sm text-muted-foreground">
+                                  {option.address}
+                                </p>
+                              )}
+                            </div>
+                          </div>
+                        ))}
+
+                        {/* Input for New Address */}
+                        {shippingInfo.addressOption === "New" && (
+                          <div className="mt-4 space-y-2 animate-fade-in-up">
+                            <Label
+                              htmlFor="address"
+                              className="text-sm text-muted-foreground font-medium"
+                            >
+                              Enter Full Address
+                            </Label>
+                            <Input
+                              id="address"
+                              value={shippingInfo.address}
+                              onChange={(e) =>
+                                setShippingInfo({
+                                  ...shippingInfo,
+                                  address: e.target.value,
+                                })
+                              }
+                              placeholder="e.g. 789 Lake View Road, Downtown"
+                              className="focus:ring-2 focus:ring-primary/60 transition-all"
+                            />
+                          </div>
+                        )}
                       </div>
                     </div>
 
@@ -520,8 +603,10 @@ export default function CheckoutPage() {
                     </div>
 
                     <div className="flex justify-between font-semibold bg-green-100 p-2 rounded text-green-700">
-                      <span>Total Saving:</span>
-                      ₹{deliveryFee === 0 ? Math.floor(deliveryFee / 3) + deliveryFee : 0}
+                      <span>Total Saving:</span>₹
+                      {deliveryFee === 0
+                        ? Math.floor(deliveryFee / 3) + deliveryFee
+                        : 0}
                     </div>
                   </div>
 
