@@ -321,9 +321,9 @@ export default function CheckoutPage() {
                         ].map((option) => (
                           <div
                             key={option.value}
-                            className={`flex items-center gap-3 px-2 rounded-xl border transition-all cursor-pointer ${
+                            className={`flex items-center gap-3 px-6 rounded-xl border transition-all cursor-pointer  ${
                               shippingInfo.addressOption === option.value
-                                ? "border-red-300 bg-pink-200 shadow-sm"
+                                ? "border-red-300 bg-pink-200 shadow-sm duration-300 ease-in-out"
                                 : "border-muted hover:border-primary/50 hover:bg-muted/50"
                             }`}
                             onClick={() =>
