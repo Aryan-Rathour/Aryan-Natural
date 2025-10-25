@@ -5,6 +5,7 @@ import './globals.css';
 import { CartProvider } from "@/contexts/cart-context"
 import { generateOrganizationSchema , generateWebsiteSchema } from "@/lib/schema";
 import NotificationPopUp from "@/components/itemAdded";
+import AdSense from "@/components/ads/AdSense";
 
 
 const poppins = Poppins({
@@ -122,6 +123,9 @@ export default function RootLayout({
 
      <head>
      
+        <AdSense pId="ca-pub-4007604466129226"/>
+
+     
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -168,7 +172,7 @@ export default function RootLayout({
 
       <body>
         <CartProvider>{children}
-          <NotificationPopUp/>
+          <NotificationPopUp onViewCart={undefined}/>
         </CartProvider>
 
       </body>
