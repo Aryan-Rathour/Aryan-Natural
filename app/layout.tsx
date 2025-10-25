@@ -123,8 +123,10 @@ export default function RootLayout({
 
      <head>
      
-        <AdSense pId="ca-pub-4007604466129226"/>
-
+        {/* <AdSense pId="ca-pub-4007604466129226"/>
+         */}
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4007604466129226"
+     crossOrigin="anonymous"></script>
      
         <script
           type="application/ld+json"
